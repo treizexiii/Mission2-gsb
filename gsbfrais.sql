@@ -2,10 +2,10 @@
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : lun. 11 jan. 2021 à 15:52
--- Version du serveur :  5.7.31
--- Version de PHP : 7.4.9
+-- Host: 127.0.0.1
+-- Generation Time: Mar 25, 2021 at 10:26 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,24 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `gsbfrais`
+-- Database: `gsbfrais`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etat`
+-- Table structure for table `etat`
 --
 
-DROP TABLE IF EXISTS `etat`;
-CREATE TABLE IF NOT EXISTS `etat` (
+CREATE TABLE `etat` (
   `id` char(2) NOT NULL,
-  `libelle` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `libelle` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `etat`
+-- Dumping data for table `etat`
 --
 
 INSERT INTO `etat` (`id`, `libelle`) VALUES
@@ -47,23 +45,20 @@ INSERT INTO `etat` (`id`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fichefrais`
+-- Table structure for table `fichefrais`
 --
 
-DROP TABLE IF EXISTS `fichefrais`;
-CREATE TABLE IF NOT EXISTS `fichefrais` (
+CREATE TABLE `fichefrais` (
   `idVisiteur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `nbJustificatifs` int(11) DEFAULT NULL,
   `montantValide` decimal(10,2) DEFAULT NULL,
   `dateModif` date DEFAULT NULL,
-  `idEtat` char(2) DEFAULT 'CR',
-  PRIMARY KEY (`idVisiteur`,`mois`),
-  KEY `idEtat` (`idEtat`)
+  `idEtat` char(2) DEFAULT 'CR'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `fichefrais`
+-- Dumping data for table `fichefrais`
 --
 
 INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
@@ -199,7 +194,8 @@ INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValid
 ('a131', '202010', 9, '2286.88', '2020-12-04', 'RB'),
 ('a131', '202011', 0, '3758.71', '2020-12-05', 'VA'),
 ('a131', '202012', 11, '0.00', '2021-01-11', 'CL'),
-('a131', '202101', 0, '0.00', '2021-01-11', 'CR'),
+('a131', '202101', 0, '0.00', '2021-03-25', 'CL'),
+('a131', '202103', 0, '0.00', '2021-03-25', 'CR'),
 ('a17', '201001', 1, '2420.75', '2010-03-06', 'RB'),
 ('a17', '201002', 7, '1647.33', '2010-04-05', 'RB'),
 ('a17', '201003', 10, '917.17', '2010-05-05', 'RB'),
@@ -1036,9 +1032,9 @@ INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValid
 ('b25', '201306', 10, '2756.87', '2013-08-05', 'RB'),
 ('b25', '201307', 8, '3330.32', '2013-09-02', 'RB'),
 ('b25', '201308', 6, '3047.17', '2013-10-08', 'RB'),
-('b25', '201309', 6, '2529.54', '2013-11-07', 'RB'),
-('b25', '201310', 9, '2844.22', '2013-12-01', 'RB');
+('b25', '201309', 6, '2529.54', '2013-11-07', 'RB');
 INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
+('b25', '201310', 9, '2844.22', '2013-12-01', 'RB'),
 ('b25', '201311', 8, '2119.23', '2014-01-03', 'RB'),
 ('b25', '201312', 7, '3421.28', '2014-02-06', 'RB'),
 ('b25', '201401', 0, '2365.30', '2014-03-03', 'RB'),
@@ -2015,9 +2011,9 @@ INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValid
 ('c3', '201712', 6, '1534.03', '2018-02-07', 'RB'),
 ('c3', '201801', 2, '3350.12', '2018-03-01', 'RB'),
 ('c3', '201802', 6, '3253.36', '2018-04-08', 'RB'),
-('c3', '201803', 9, '2392.95', '2018-05-07', 'RB'),
-('c3', '201804', 9, '1935.66', '2018-06-06', 'RB');
+('c3', '201803', 9, '2392.95', '2018-05-07', 'RB');
 INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
+('c3', '201804', 9, '1935.66', '2018-06-06', 'RB'),
 ('c3', '201805', 3, '1846.13', '2018-07-01', 'RB'),
 ('c3', '201806', 6, '2050.15', '2018-08-01', 'RB'),
 ('c3', '201807', 8, '2544.53', '2018-09-01', 'RB'),
@@ -2991,9 +2987,9 @@ INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValid
 ('e5', '201103', 11, '2824.13', '2011-05-06', 'RB'),
 ('e5', '201104', 3, '3707.62', '2011-06-06', 'RB'),
 ('e5', '201105', 12, '2679.67', '2011-07-03', 'RB'),
-('e5', '201106', 3, '2478.60', '2011-08-08', 'RB'),
-('e5', '201107', 3, '3907.90', '2011-09-02', 'RB');
+('e5', '201106', 3, '2478.60', '2011-08-08', 'RB');
 INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES
+('e5', '201107', 3, '3907.90', '2011-09-02', 'RB'),
 ('e5', '201108', 10, '1328.98', '2011-10-02', 'RB'),
 ('e5', '201109', 6, '2539.53', '2011-11-01', 'RB'),
 ('e5', '201110', 5, '3207.34', '2011-12-04', 'RB'),
@@ -3639,19 +3635,17 @@ INSERT INTO `fichefrais` (`idVisiteur`, `mois`, `nbJustificatifs`, `montantValid
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fraisforfait`
+-- Table structure for table `fraisforfait`
 --
 
-DROP TABLE IF EXISTS `fraisforfait`;
-CREATE TABLE IF NOT EXISTS `fraisforfait` (
+CREATE TABLE `fraisforfait` (
   `id` char(3) NOT NULL,
   `libelle` char(20) DEFAULT NULL,
-  `montant` decimal(5,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `montant` decimal(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `fraisforfait`
+-- Dumping data for table `fraisforfait`
 --
 
 INSERT INTO `fraisforfait` (`id`, `libelle`, `montant`) VALUES
@@ -3663,21 +3657,18 @@ INSERT INTO `fraisforfait` (`id`, `libelle`, `montant`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `lignefraisforfait`
+-- Table structure for table `lignefraisforfait`
 --
 
-DROP TABLE IF EXISTS `lignefraisforfait`;
-CREATE TABLE IF NOT EXISTS `lignefraisforfait` (
+CREATE TABLE `lignefraisforfait` (
   `idVisiteur` char(4) NOT NULL,
   `mois` char(6) NOT NULL,
   `idFraisForfait` char(3) NOT NULL,
-  `quantite` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idVisiteur`,`mois`,`idFraisForfait`),
-  KEY `idFraisForfait` (`idFraisForfait`)
+  `quantite` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `lignefraisforfait`
+-- Dumping data for table `lignefraisforfait`
 --
 
 INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
@@ -4213,6 +4204,10 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('a131', '202101', 'KM', 0),
 ('a131', '202101', 'NUI', 0),
 ('a131', '202101', 'REP', 0),
+('a131', '202103', 'ETP', 0),
+('a131', '202103', 'KM', 0),
+('a131', '202103', 'NUI', 0),
+('a131', '202103', 'REP', 0),
 ('a17', '201001', 'ETP', 11),
 ('a17', '201001', 'KM', 882),
 ('a17', '201001', 'NUI', 10),
@@ -5459,12 +5454,12 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('a93', '201311', 'REP', 9),
 ('a93', '201312', 'ETP', 11),
 ('a93', '201312', 'KM', 701),
-('a93', '201312', 'NUI', 16),
+('a93', '201312', 'NUI', 16);
+INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('a93', '201312', 'REP', 14),
 ('a93', '201401', 'ETP', 3),
 ('a93', '201401', 'KM', 531),
-('a93', '201401', 'NUI', 13);
-INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('a93', '201401', 'NUI', 13),
 ('a93', '201401', 'REP', 11),
 ('a93', '201402', 'ETP', 10),
 ('a93', '201402', 'KM', 847),
@@ -7262,12 +7257,12 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('b19', '201806', 'KM', 339),
 ('b19', '201806', 'NUI', 8),
 ('b19', '201806', 'REP', 18),
-('b19', '201807', 'ETP', 13),
+('b19', '201807', 'ETP', 13);
+INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('b19', '201807', 'KM', 455),
 ('b19', '201807', 'NUI', 15),
 ('b19', '201807', 'REP', 16),
-('b19', '201808', 'ETP', 20);
-INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('b19', '201808', 'ETP', 20),
 ('b19', '201808', 'KM', 300),
 ('b19', '201808', 'NUI', 9),
 ('b19', '201808', 'REP', 10),
@@ -9069,12 +9064,12 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('b4', '201201', 'REP', 8),
 ('b4', '201202', 'ETP', 12),
 ('b4', '201202', 'KM', 391),
-('b4', '201202', 'NUI', 2),
+('b4', '201202', 'NUI', 2);
+INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('b4', '201202', 'REP', 18),
 ('b4', '201203', 'ETP', 19),
 ('b4', '201203', 'KM', 685),
-('b4', '201203', 'NUI', 4);
-INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('b4', '201203', 'NUI', 4),
 ('b4', '201203', 'REP', 4),
 ('b4', '201204', 'ETP', 5),
 ('b4', '201204', 'KM', 300),
@@ -10889,12 +10884,12 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('c14', '201612', 'NUI', 20),
 ('c14', '201612', 'REP', 20),
 ('c14', '201701', 'ETP', 4),
-('c14', '201701', 'KM', 569),
+('c14', '201701', 'KM', 569);
+INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('c14', '201701', 'NUI', 15),
 ('c14', '201701', 'REP', 7),
 ('c14', '201702', 'ETP', 2),
-('c14', '201702', 'KM', 694);
-INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('c14', '201702', 'KM', 694),
 ('c14', '201702', 'NUI', 15),
 ('c14', '201702', 'REP', 6),
 ('c14', '201703', 'ETP', 20),
@@ -12710,12 +12705,12 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('d51', '201011', 'NUI', 17),
 ('d51', '201011', 'REP', 9),
 ('d51', '201012', 'ETP', 6),
-('d51', '201012', 'KM', 857),
+('d51', '201012', 'KM', 857);
+INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('d51', '201012', 'NUI', 11),
 ('d51', '201012', 'REP', 9),
 ('d51', '201101', 'ETP', 14),
-('d51', '201101', 'KM', 682);
-INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('d51', '201101', 'KM', 682),
 ('d51', '201101', 'NUI', 8),
 ('d51', '201101', 'REP', 14),
 ('d51', '201102', 'ETP', 9),
@@ -14513,12 +14508,12 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('e39', '201506', 'ETP', 2),
 ('e39', '201506', 'KM', 664),
 ('e39', '201506', 'NUI', 19),
-('e39', '201506', 'REP', 19),
+('e39', '201506', 'REP', 19);
+INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('e39', '201507', 'ETP', 11),
 ('e39', '201507', 'KM', 792),
 ('e39', '201507', 'NUI', 17),
-('e39', '201507', 'REP', 15);
-INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('e39', '201507', 'REP', 15),
 ('e39', '201508', 'ETP', 5),
 ('e39', '201508', 'KM', 785),
 ('e39', '201508', 'NUI', 7),
@@ -16336,12 +16331,12 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 ('e52', '202005', 'NUI', 13),
 ('e52', '202005', 'REP', 7),
 ('e52', '202006', 'ETP', 12),
-('e52', '202006', 'KM', 330),
+('e52', '202006', 'KM', 330);
+INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
 ('e52', '202006', 'NUI', 11),
 ('e52', '202006', 'REP', 18),
 ('e52', '202007', 'ETP', 6),
-('e52', '202007', 'KM', 901);
-INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quantite`) VALUES
+('e52', '202007', 'KM', 901),
 ('e52', '202007', 'NUI', 2),
 ('e52', '202007', 'REP', 4),
 ('e52', '202008', 'ETP', 7),
@@ -17952,11 +17947,29 @@ INSERT INTO `lignefraisforfait` (`idVisiteur`, `mois`, `idFraisForfait`, `quanti
 -- --------------------------------------------------------
 
 --
--- Structure de la table `visiteur`
+-- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `visiteur`;
-CREATE TABLE IF NOT EXISTS `visiteur` (
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `roleName` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `roleName`) VALUES
+(1, 'Visiteur'),
+(2, 'Gestionnaire');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visiteur`
+--
+
+CREATE TABLE `visiteur` (
   `id` char(4) NOT NULL,
   `nom` char(30) DEFAULT NULL,
   `prenom` char(30) DEFAULT NULL,
@@ -17966,59 +17979,150 @@ CREATE TABLE IF NOT EXISTS `visiteur` (
   `cp` char(5) DEFAULT NULL,
   `ville` char(30) DEFAULT NULL,
   `dateEmbauche` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `roleId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `visiteur`
+-- Dumping data for table `visiteur`
 --
 
-INSERT INTO `visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES
-('a131', 'Villechalane', 'Louis', 'toto', 'titi', '8 rue des Charmes', '46000', 'Cahors', '2014-03-09'),
-('a17', 'Andre', 'David', 'dandre', 'oppg5', '1 rue Petit', '46200', 'Lalbenque', '2007-02-09'),
-('a55', 'Bedos', 'Christian', 'cbedos', 'gmhxd', '1 rue Peranud', '46250', 'Montcuq', '2003-03-31'),
-('a93', 'Tusseau', 'Louis', 'ltusseau', 'ktp3s', '22 rue des Ternes', '46123', 'Gramat', '2008-07-18'),
-('b13', 'Bentot', 'Pascal', 'pbentot', 'doyw1', '11 allée des Cerises', '46512', 'Bessines', '2000-09-25'),
-('b16', 'Bioret', 'Luc', 'lbioret', 'hrjfs', '1 Avenue gambetta', '46000', 'Cahors', '2006-07-28'),
-('b19', 'Bunisset', 'Francis', 'fbunisset', '4vbnd', '10 rue des Perles', '93100', 'Montreuil', '1996-01-07'),
-('b25', 'Bunisset', 'Denise', 'dbunisset', 's1y1r', '23 rue Manin', '75019', 'paris', '2019-02-21'),
-('b28', 'Cacheux', 'Bernard', 'bcacheux', 'uf7r3', '114 rue Blanche', '75017', 'Paris', '2018-01-29'),
-('b34', 'Cadic', 'Eric', 'ecadic', '6u8dc', '123 avenue de la République', '75011', 'Paris', '2016-12-10'),
-('b4', 'Charoze', 'Catherine', 'ccharoze', 'u817o', '100 rue Petit', '75019', 'Paris', '2014-01-29'),
-('b50', 'Clepkens', 'Christophe', 'cclepkens', 'bw1us', '12 allée des Anges', '93230', 'Romainville', '2011-10-28'),
-('b59', 'Cottin', 'Vincenne', 'vcottin', '2hoh9', '36 rue Des Roches', '93100', 'Monteuil', '2010-02-04'),
-('c14', 'Daburon', 'François', 'fdaburon', '7oqpv', '13 rue de Chanzy', '94000', 'Créteil', '2010-04-30'),
-('c3', 'De', 'Philippe', 'pde', 'gk9kx', '13 rue Barthes', '94000', 'Créteil', '2019-03-02'),
-('c54', 'Debelle', 'Michel', 'mdebelle', 'od5rt', '181 avenue Barbusse', '93210', 'Rosny', '2015-02-09'),
-('d13', 'Debelle', 'Jeanne', 'jdebelle', 'nvwqq', '134 allée des Joncs', '44000', 'Nantes', '2008-07-28'),
-('d51', 'Debroise', 'Michel', 'mdebroise', 'sghkb', '2 Bld Jourdain', '44000', 'Nantes', '2009-07-04'),
-('e22', 'Desmarquest', 'Nathalie', 'ndesmarquest', 'f1fob', '14 Place d Arc', '45000', 'Orléans', '2014-01-29'),
-('e24', 'Desnost', 'Pierre', 'pdesnost', '4k2o5', '16 avenue des Cèdres', '23200', 'Guéret', '2009-04-24'),
-('e39', 'Dudouit', 'Frédéric', 'fdudouit', '44im8', '18 rue de l église', '23120', 'GrandBourg', '2008-10-18'),
-('e49', 'Duncombe', 'Claude', 'cduncombe', 'qf77j', '19 rue de la tour', '23100', 'La souteraine', '1995-12-27'),
-('e5', 'Enault-Pascreau', 'Céline', 'cenault', 'y2qdu', '25 place de la gare', '23200', 'Gueret', '2003-11-18'),
-('e52', 'Eynde', 'Valérie', 'veynde', 'i7sn3', '3 Grand Place', '13015', 'Marseille', '2008-01-18'),
-('f21', 'Finck', 'Jacques', 'jfinck', 'mpb3t', '10 avenue du Prado', '13002', 'Marseille', '2010-01-27'),
-('f39', 'Frémont', 'Fernande', 'ffremont', 'xs5tq', '4 route de la mer', '13012', 'Allauh', '2006-12-18'),
-('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1994-01-18');
+INSERT INTO `visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`, `roleId`) VALUES
+('a131', 'Villechalane', 'Louis', 'toto', 'titi', '8 rue des Charmes', '46000', 'Cahors', '2014-03-09', 2),
+('a17', 'Andre', 'David', 'dandre', 'oppg5', '1 rue Petit', '46200', 'Lalbenque', '2007-02-09', 1),
+('a55', 'Bedos', 'Christian', 'cbedos', 'gmhxd', '1 rue Peranud', '46250', 'Montcuq', '2003-03-31', 1),
+('a93', 'Tusseau', 'Louis', 'ltusseau', 'ktp3s', '22 rue des Ternes', '46123', 'Gramat', '2008-07-18', 1),
+('b13', 'Bentot', 'Pascal', 'pbentot', 'doyw1', '11 allée des Cerises', '46512', 'Bessines', '2000-09-25', 1),
+('b16', 'Bioret', 'Luc', 'lbioret', 'hrjfs', '1 Avenue gambetta', '46000', 'Cahors', '2006-07-28', 1),
+('b19', 'Bunisset', 'Francis', 'fbunisset', '4vbnd', '10 rue des Perles', '93100', 'Montreuil', '1996-01-07', 1),
+('b25', 'Bunisset', 'Denise', 'dbunisset', 's1y1r', '23 rue Manin', '75019', 'paris', '2019-02-21', 1),
+('b28', 'Cacheux', 'Bernard', 'bcacheux', 'uf7r3', '114 rue Blanche', '75017', 'Paris', '2018-01-29', 1),
+('b34', 'Cadic', 'Eric', 'ecadic', '6u8dc', '123 avenue de la République', '75011', 'Paris', '2016-12-10', 1),
+('b4', 'Charoze', 'Catherine', 'ccharoze', 'u817o', '100 rue Petit', '75019', 'Paris', '2014-01-29', 1),
+('b50', 'Clepkens', 'Christophe', 'cclepkens', 'bw1us', '12 allée des Anges', '93230', 'Romainville', '2011-10-28', 1),
+('b59', 'Cottin', 'Vincenne', 'vcottin', '2hoh9', '36 rue Des Roches', '93100', 'Monteuil', '2010-02-04', 1),
+('c14', 'Daburon', 'François', 'fdaburon', '7oqpv', '13 rue de Chanzy', '94000', 'Créteil', '2010-04-30', 1),
+('c3', 'De', 'Philippe', 'pde', 'gk9kx', '13 rue Barthes', '94000', 'Créteil', '2019-03-02', NULL),
+('c54', 'Debelle', 'Michel', 'mdebelle', 'od5rt', '181 avenue Barbusse', '93210', 'Rosny', '2015-02-09', NULL),
+('d13', 'Debelle', 'Jeanne', 'jdebelle', 'nvwqq', '134 allée des Joncs', '44000', 'Nantes', '2008-07-28', NULL),
+('d51', 'Debroise', 'Michel', 'mdebroise', 'sghkb', '2 Bld Jourdain', '44000', 'Nantes', '2009-07-04', NULL),
+('e22', 'Desmarquest', 'Nathalie', 'ndesmarquest', 'f1fob', '14 Place d Arc', '45000', 'Orléans', '2014-01-29', NULL),
+('e24', 'Desnost', 'Pierre', 'pdesnost', '4k2o5', '16 avenue des Cèdres', '23200', 'Guéret', '2009-04-24', NULL),
+('e39', 'Dudouit', 'Frédéric', 'fdudouit', '44im8', '18 rue de l église', '23120', 'GrandBourg', '2008-10-18', NULL),
+('e49', 'Duncombe', 'Claude', 'cduncombe', 'qf77j', '19 rue de la tour', '23100', 'La souteraine', '1995-12-27', NULL),
+('e5', 'Enault-Pascreau', 'Céline', 'cenault', 'y2qdu', '25 place de la gare', '23200', 'Gueret', '2003-11-18', NULL),
+('e52', 'Eynde', 'Valérie', 'veynde', 'i7sn3', '3 Grand Place', '13015', 'Marseille', '2008-01-18', NULL),
+('f21', 'Finck', 'Jacques', 'jfinck', 'mpb3t', '10 avenue du Prado', '13002', 'Marseille', '2010-01-27', NULL),
+('f39', 'Frémont', 'Fernande', 'ffremont', 'xs5tq', '4 route de la mer', '13012', 'Allauh', '2006-12-18', NULL),
+('f4', 'Gest', 'Alain', 'agest', 'dywvt', '30 avenue de la mer', '13025', 'Berre', '1994-01-18', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Contraintes pour les tables déchargées
+-- Table structure for table `visiteurarchive`
+--
+
+CREATE TABLE `visiteurarchive` (
+  `id` char(4) NOT NULL,
+  `nom` char(30) DEFAULT NULL,
+  `prenom` char(30) DEFAULT NULL,
+  `dateEmbauche` date DEFAULT NULL,
+  `adresse` char(30) DEFAULT NULL,
+  `ville` char(30) DEFAULT NULL,
+  `cp` char(5) DEFAULT NULL,
+  `login` char(20) DEFAULT NULL,
+  `mdp` char(20) DEFAULT NULL,
+  `roleId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Contraintes pour la table `fichefrais`
+-- Indexes for table `etat`
+--
+ALTER TABLE `etat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `fichefrais`
+--
+ALTER TABLE `fichefrais`
+  ADD PRIMARY KEY (`idVisiteur`,`mois`),
+  ADD KEY `idEtat` (`idEtat`);
+
+--
+-- Indexes for table `fraisforfait`
+--
+ALTER TABLE `fraisforfait`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lignefraisforfait`
+--
+ALTER TABLE `lignefraisforfait`
+  ADD PRIMARY KEY (`idVisiteur`,`mois`,`idFraisForfait`),
+  ADD KEY `idFraisForfait` (`idFraisForfait`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `visiteur`
+--
+ALTER TABLE `visiteur`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `roleId` (`roleId`);
+
+--
+-- Indexes for table `visiteurarchive`
+--
+ALTER TABLE `visiteurarchive`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `roleId` (`roleId`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `fichefrais`
 --
 ALTER TABLE `fichefrais`
   ADD CONSTRAINT `fichefrais_ibfk_1` FOREIGN KEY (`idEtat`) REFERENCES `etat` (`id`),
   ADD CONSTRAINT `fichefrais_ibfk_2` FOREIGN KEY (`idVisiteur`) REFERENCES `visiteur` (`id`);
 
 --
--- Contraintes pour la table `lignefraisforfait`
+-- Constraints for table `lignefraisforfait`
 --
 ALTER TABLE `lignefraisforfait`
   ADD CONSTRAINT `lignefraisforfait_ibfk_1` FOREIGN KEY (`idVisiteur`,`mois`) REFERENCES `fichefrais` (`idVisiteur`, `mois`),
   ADD CONSTRAINT `lignefraisforfait_ibfk_2` FOREIGN KEY (`idFraisForfait`) REFERENCES `fraisforfait` (`id`);
+
+--
+-- Constraints for table `visiteur`
+--
+ALTER TABLE `visiteur`
+  ADD CONSTRAINT `visiteur_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`);
+
+--
+-- Constraints for table `visiteurarchive`
+--
+ALTER TABLE `visiteurarchive`
+  ADD CONSTRAINT `visiteurarchive_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
