@@ -2,6 +2,7 @@
 
 namespace App\MyApp;
 
+use Exception;
 use PDO;
 use Illuminate\Support\Facades\Config;
 
@@ -233,5 +234,43 @@ class PdoGsb
 		$res = $this->monPdo->query($req);
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
+	}
+
+	public function deleteVisiteur(string $id)
+	{
+		$message = "erreur";
+
+		try {
+			$sqlVisiteur = "SELECT * FROM visiteur WHERE  id ='" . $id . "'";
+			$res = $this->monPdo->query($sqlVisiteur);
+			$infosVisiteur = $res->fetch();
+			$sqlVisiteur = "INSERT INTO `visiteurarchive`(`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`,`roleId`) VALUES ('" . $infosVisiteur['id'] . "','" . $infosVisiteur['nom'] . "','" . $infosVisiteur['prenom'] . "','" . $infosVisiteur['login'] . "','" . $infosVisiteur['mdp'] . "','" . $infosVisiteur['adresse'] . "'," . $infosVisiteur['cp'] . ",'" . $infosVisiteur['ville'] . "','" . $infosVisiteur['dateEmbauche'] . "', " . $infosVisiteur['roleId'] . ")";
+			$this->monPdo->exec($sqlVisiteur);
+
+			$sqlFrais = "SELECT * FROM fichefrais NATURAL JOIN lignefraisforfait WHERE fichefrais.idVisiteur ='" . $id . "'";
+			$res = $this->monPdo->query($sqlFrais);
+			$listeFrais = $res->fetchAll();
+			foreach ($listeFrais as $frais) {
+				$sqlLigne = "INSERT INTO `lignefraisforfaitarchive`(`quantite`, `mois`, `idVisiteur`, `idFraisForfait`) VALUES (" . $frais['quantite'] . ", " . $frais['mois'] . ", '" . $frais['idVisiteur'] . "', '" . $frais['idFraisForfait'] . "')";
+				$sqlFiche = "INSERT INTO `fichefraisarchive`(`idVisiteur`, `mois`, `nbJustificatifs`, `montantValide`, `dateModif`, `idEtat`) VALUES ('" . $frais['idVisiteur'] . "', '" . $frais['mois'] . "', " . $frais['nbJustificatifs'] . ", " . $frais['montantValide'] . ", '" . $frais['dateModif'] . "', '" . $frais['idEtat'] . "')";
+				$this->monPdo->exec($sqlLigne);
+				$this->monPdo->exec($sqlFiche);
+			}
+
+			$delete = "DELETE FROM lignefraisforfait WHERE lignefraisforfait.idVisiteur='" . $id . "'";
+			$this->monPdo->exec($delete);
+			$delete = "DELETE FROM fichefrais WHERE fichefrais.idVisiteur='" . $id . "'";
+			$this->monPdo->exec($delete);
+
+			$delete = "DELETE FROM visiteur WHERE visiteur.id ='" . $id . "'";
+			$this->monPdo->exec($delete);
+
+			$message = "Le visiteur " . $id . " a bien été basculé en archive";
+
+			return $message;
+
+		} catch (Exception $e) {
+			return $message . " " . $e;
+		}
 	}
 }

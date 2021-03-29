@@ -54,3 +54,8 @@ Route::get('getionVisiteur', [
         'as' => 'chemin_gestionVisiteur',
         'uses' => 'gererVisiteurController@index'
 ]);
+
+Route::get('getionVisiteur/{id}', [
+        'as' => 'chemin_detailsVisiteur',
+        'uses' => 'gererVisiteurController@delete'
+]);
