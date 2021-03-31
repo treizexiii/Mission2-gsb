@@ -7,7 +7,7 @@
   </div>
   <ul id="menuList">
     <li>
-      <strong>Bonjour {{ $visiteur['nom'] . ' ' . $visiteur['prenom'] }}</strong>
+      <strong>Bonjour {{ $visiteur['nom'] . ' ' . $visiteur['prenom'] }} ({{ $visiteur['statut']}})</strong>
 
     </li>
     @if ($visiteur['statut'] == 'Gestionnaire')

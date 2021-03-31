@@ -236,6 +236,16 @@ class PdoGsb
 		return $lesLignes;
 	}
 
+	public function getVisitorDetails(string $id) {
+		$req = "SELECT * FROM `visiteur` WHERE visiteur.id='" . $id . "'";
+		$res = $this->monPdo->query($req);
+		$datas['detailsVisiteur'] = $res->fetch();
+		$req = "SELECT * FROM fichefrais NATURAL JOIN lignefraisforfait WHERE fichefrais.idVisiteur ='". $id ."' ORDER BY `mois` ASC";
+		$res = $this->monPdo->query($req);
+		$datas['listeFrais'] = $res->fetchAll();
+		return $datas;
+	}
+
 	public function deleteVisiteur(string $id)
 	{
 		$message = "erreur";

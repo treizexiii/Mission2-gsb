@@ -1,11 +1,15 @@
 @extends('sommaire')
 @section('contenu2')
+
     <div class="contenu">
         <h2>Liste des visiteurs</h2>
+
         <div class="corpsForm">
+
             @if (isset($message))
                 <p>{{ $message }}</p>
             @endif
+
             <table>
                 <thead>
                     <tr>
@@ -24,7 +28,7 @@
                             <td>{{ $item['prenom'] }}</td>
                             <td>{{ $item['dateEmbauche'] }}</td>
                             <td>{{ $item['roleName'] }}</td>
-                            <td><a href="{{ route('chemin_detailsVisiteur', ['id' => $item['0']]) }}"><button>Supprimer</button></a></td>
+                            <td><a href="{{ route('chemin_detailsVisiteur', ['id' => $item['0']]) }}"><button>Voir</button></a></td>
                         </tr>
                     @endforeach
                 </tbody>

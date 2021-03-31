@@ -19,6 +19,15 @@ class gererVisiteurController extends Controller
         }
     }
 
+    public function Details(string $id)
+    {
+        if (session('visiteur') != null) {
+            $visiteur = session('visiteur');
+            $infos = PdoGsb::getVisitorDetails($id);
+            return view('detailsVisiteur')->with('visiteur', $visiteur)->with('infos', $infos);
+        }
+    }
+
     public function delete(string $id)
     {
         if (session('visiteur') != null) {
